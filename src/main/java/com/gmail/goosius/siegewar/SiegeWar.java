@@ -47,7 +47,7 @@ public class SiegeWar extends JavaPlugin {
 
 	private static SiegeWar plugin;
 	private static ScoreboardLibrary scoreboardLibrary;
-	private final String requiredTownyVersion = "0.100.3.0";
+	private final String requiredTownyVersion = "0.100.4.0";
 	private static final SiegeHUDManager siegeHUDManager = new SiegeHUDManager();
 	private final Object scheduler;
 
@@ -85,7 +85,7 @@ public class SiegeWar extends JavaPlugin {
 		} catch (NoPacketAdapterAvailableException e) {
 			plugin.getLogger().warning("No scoreboard packet adapter available!");
 		}
-    	
+
         if (!townyVersionCheck()) {
             severe("Towny version does not meet required minimum version: " + requiredTownyVersion);
             siegeWarPluginError = true;
