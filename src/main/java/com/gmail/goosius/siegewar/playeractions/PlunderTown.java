@@ -15,12 +15,12 @@ import com.palmergames.bukkit.towny.TownySettings;
 import com.palmergames.bukkit.towny.TownyUniverse;
 import com.palmergames.bukkit.towny.event.DeleteTownEvent.Cause;
 import com.palmergames.bukkit.towny.exceptions.TownyException;
-import com.palmergames.bukkit.towny.object.EconomyAccount;
 import com.palmergames.bukkit.towny.object.Nation;
 import com.palmergames.bukkit.towny.object.Resident;
 import com.palmergames.bukkit.towny.object.Town;
 import com.palmergames.bukkit.towny.object.Translatable;
 import com.palmergames.bukkit.towny.object.Translator;
+import com.palmergames.bukkit.towny.object.economy.TownyServerAccount;
 import com.palmergames.bukkit.towny.utils.MoneyUtil;
 
 import org.bukkit.entity.Player;
@@ -66,6 +66,9 @@ public class PlunderTown {
 
 		if(siege.isTownPlundered())
 			throw new TownyException(translator.of("msg_err_siege_war_town_already_plundered", townToBePlundered.getName()));
+
+		if (SiegeWarSettings.isOnlyOneActionEnabled() && siege.isTownInvaded())
+			throw new TownyException(translator.of("msg_err_town_already_invaded_only_one_action"));
 
 		// If the rebels won, plunder is not possible
 		if(siege.isRevoltSiege() && siege.getStatus().defendersWon())
@@ -203,8 +206,8 @@ public class PlunderTown {
 	private static double createPlunderForNation(Siege siege, Nation nation, String townname, double totalPlunderAmount) {
 		//Pay nation bank
 		if(TownySettings.isEcoClosedEconomyEnabled()) {
-			totalPlunderAmount = Math.min(EconomyAccount.SERVER_ACCOUNT.getHoldingBalance(), totalPlunderAmount);
-			EconomyAccount.SERVER_ACCOUNT.payTo(totalPlunderAmount, nation.getAccount(), "Plunder of " + townname);
+			totalPlunderAmount = Math.min(TownyServerAccount.ACCOUNT.getHoldingBalance(), totalPlunderAmount);
+			TownyServerAccount.ACCOUNT.payTo(totalPlunderAmount, nation.getAccount(), "Plunder of " + townname);
 		} else {
 			nation.getAccount().deposit(totalPlunderAmount, "Plunder of " + townname);
 		}
