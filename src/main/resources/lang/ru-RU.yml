@@ -495,8 +495,12 @@ msg_err_cannot_spawn_battle_commander_dead: "&cYou cannot spawn to the siege bec
 msg_err_cannot_spawn_battle_commander_not_in_siegezone: "&cYou cannot spawn to the siege because your team's battle commander is not in the Siege-Zone."
 msg_err_cannot_spawn_not_in_homeblock: "&cYou must be in your town homeblock to spawn to the siege."
 msg_err_cannot_spawn_outpost_during_battle_session: "&cYou cannot spawn to an outpost while your nation has an offensive siege during a battle session."
-#Added in 2.8.0
-msg_swa_remove_siege: '&bSiege of %s removed via admin commands.'
+#Webhook
+msg_swa_remove_siege_admin_command: '&bSiege of %s removed via admin commands.'
+msg_swa_remove_siege_nation_delete: '&bSiege of %s removed because the attacking nation no longer exists.'
+msg_swa_remove_siege_town_delete: '&bSiege of %s removed because the town was deleted.'
+msg_swa_remove_siege_town_ruin: '&bSiege of %s removed because the town was ruined.'
+msg_swa_remove_siege_immunity_expired: '&bSiege of %s removed because siege immunity expired.'
 msg_swa_battle: 'Битва'
 #Siege Lore
 siege_lore_color_attacker: '&c%s'
@@ -539,5 +543,9 @@ msg_err_you_arent_able_to_abandon_or_surrender_this_siege: "You do not have the 
 msg_err_cannot_change_capital_because_peaceful: "&cYou cannot change the capital of the nation, because the new capital is peaceful."
 msg_err_your_town_cannot_be_peaceful_while_a_capital_city: "&cYour town could not change to peaceful because capital cities are not allowed to be peaceful."
 msg_err_cannot_start_siege_as_a_peaceful_town: "&cYou cannot begin a siege, because your town is peaceful."
+#Added in 2.13.0
+#Only One Action
 msg_err_town_already_plundered_only_one_action: "&cYou cannot invade an already plundered nation."
 msg_err_town_already_invaded_only_one_action: "&cYou cannot plunder an already invaded nation."
+siege_msg_err_cannot_assign_rank_during_active_battlesession: "&cYou cannot add the %s rank while the battle session is active."
+siege_msg_err_cannot_assign_rank_during_active_siege: "&cYou cannot add the %s rank while your town is involved in a siege."

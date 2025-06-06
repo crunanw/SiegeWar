@@ -133,6 +133,10 @@ public class SiegeWarSettings {
 		return radius < 0 ? TownySettings.getTownBlockSize() : radius;
 	}
 
+	public static boolean getWarSiegeBannerControlSessionCheckWilderness() {
+		return Settings.getBoolean(ConfigNodes.WAR_SIEGE_BANNER_CONTROL_SESSION_CHECK_WILDERNESS);
+	}
+
 	public static int getWarSiegeBannerPlaceDistanceBlocksMax() {
 		int max = Settings.getInt(ConfigNodes.WAR_SIEGE_BANNER_PLACE_DISTANCE_TOWN_BLOCKS_MAX);
 		int min = getWarSiegeBannerPlaceDistanceBlocksMin();
@@ -297,6 +301,11 @@ public class SiegeWarSettings {
 
 	public static boolean getBeaconsEnabled() {
 		return Settings.getBoolean(ConfigNodes.BEACON_MARKERS_ENABLED);
+	}
+
+	public static boolean getBeaconsBattleSessionOnly() {
+
+		return Settings.getBoolean(ConfigNodes.BEACON_MARKERS_BATTLE_SESSION_ONLY);
 	}
 
 	public static String getBeaconCaptureColor() {
@@ -639,6 +648,14 @@ public class SiegeWarSettings {
 	
 	public static boolean isBattleCommandersEnabled() {
 		return Settings.getBoolean(ConfigNodes.BATTLE_COMMANDERS_ENABLED);
+	}
+
+	public static boolean isBattleCommandersRanksBlockedDuringActiveBattleSession() {
+		return Settings.getBoolean(ConfigNodes.BATTLE_COMMANDERS_BLOCK_ASSIGNMENT_DURING_BATTLE_SESSIONS);
+	}
+
+	public static boolean isBattleCommandersRanksBlockedDuringSieges() {
+		return Settings.getBoolean(ConfigNodes.BATTLE_COMMANDERS_BLOCK_ASSIGNMENT_DURING_SIEGES);
 	}
 
 	public static boolean isSiegeLoreEnabled() {

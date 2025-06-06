@@ -6,6 +6,7 @@ import com.gmail.goosius.siegewar.SiegeWar;
 import com.gmail.goosius.siegewar.enums.SiegeSide;
 import com.gmail.goosius.siegewar.enums.SiegeStatus;
 import com.gmail.goosius.siegewar.events.BannerControlSessionEndedEvent;
+import com.gmail.goosius.siegewar.events.BannerControlSessionPreStartEvent;
 import com.gmail.goosius.siegewar.events.BannerControlSessionStartedEvent;
 import com.gmail.goosius.siegewar.objects.BannerControlSession;
 import com.gmail.goosius.siegewar.objects.BattleSession;
@@ -14,6 +15,7 @@ import com.gmail.goosius.siegewar.settings.SiegeWarSettings;
 import com.palmergames.bukkit.towny.TownyUniverse;
 import com.palmergames.bukkit.towny.object.Resident;
 import com.palmergames.bukkit.towny.object.Translatable;
+import com.palmergames.bukkit.util.BukkitTools;
 import com.palmergames.util.TimeMgmt;
 import com.palmergames.util.TimeTools;
 import org.bukkit.Bukkit;
@@ -99,6 +101,11 @@ public class SiegeWarBannerControlUtil {
 		long sessionEndTime = System.currentTimeMillis() + sessionDurationMillis;
 		BannerControlSession bannerControlSession =
 			new BannerControlSession(resident, player, siegeSide, sessionEndTime);
+
+		BannerControlSessionPreStartEvent preStartEvent = new BannerControlSessionPreStartEvent(siege, bannerControlSession);
+		if (BukkitTools.isEventCancelled(preStartEvent))
+			return;
+
 		siege.addBannerControlSession(player, bannerControlSession);
 
 		//Notify Player in console

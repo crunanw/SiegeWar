@@ -380,6 +380,13 @@ public enum ConfigNodes {
 			"# Players will begin a banner control session when inside this radius.",
 			"# This radius also applies to siege camps.",
 			"# Setting this value to below '0' will use the size of a Town Block as the radius."),
+	WAR_SIEGE_BANNER_CONTROL_SESSION_CHECK_WILDERNESS(
+			"war.siege.distances.banner_control_session_check_wilderness",
+			"true",
+			"",
+			"# If true will check if the player is in wilderness and check the radius blocks when checking if a player is in a timed point zone.",
+			"# If false it will only check the radius blocks when checking if a player is in a timed point zone.",
+			"# Setting this to false is not intended behavior and may break some features, you should only really use this if you're moving the banner to inside of towns"),
 	WAR_SIEGE_BANNER_PLACE_DISTANCE_TOWN_BLOCKS(
 			"war.siege.distances.banner_place_distance_town_blocks","","",""),
 	WAR_SIEGE_BANNER_PLACE_DISTANCE_TOWN_BLOCKS_MAX(
@@ -713,6 +720,11 @@ public enum ConfigNodes {
 			"true",
 			"",
 			"# If enabled, client-side beacons will be shown for players at the siege banner while they are in a siege zone."),
+	BEACON_MARKERS_BATTLE_SESSION_ONLY(
+			"beacon_markers.battle_session_only",
+			"false",
+			"",
+			"# If enabled, client-side beacons will only be shown for players when there is an active battle session."),
 	BEACON_MARKERS_CAPTURE_COLOR(
 			"beacon_markers.capture_color",
 			"yellow",
@@ -1200,6 +1212,21 @@ public enum ConfigNodes {
 			"# When a battle sessions starts, then for each siege, one player from each side may be designated as the Battle Commander.",
 			"# To qualify as a battle commander, a player must be an official participant with general or king rank, and be online and in the Siege-Zone.",
 			"# If one side has a battle commander, then any member can run /sw spawn <town> to spawn on the commander."),
+
+	BATTLE_COMMANDERS_BLOCK_ASSIGNMENT_DURING_BATTLE_SESSIONS(
+			"battle_commanders.block_rank_assignment_during_active_battlesessions",
+			"false",
+			"",
+			"# If this value is true, then the ranks containing the siegewar.nation.siege.startconquestsiege permission node",
+			"# cannot be assigned to players who are part of a siege with an active battle session."),
+
+	BATTLE_COMMANDERS_BLOCK_ASSIGNMENT_DURING_SIEGES(
+			"battle_commanders.block_rank_assignment_during_sieges",
+			"false",
+			"",
+			"# If this value is true, then the ranks containing the siegewar.nation.siege.startconquestsiege permission node",
+			"# cannot be assigned to players who are part of a siege."),
+
 	SIEGE_LORE(
 			"siege_lore",
 			"",
