@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
+import me.NoChance.PvPManager.PvPlayer;
 import com.gmail.goosius.siegewar.Messaging;
 import com.gmail.goosius.siegewar.SiegeController;
 import com.gmail.goosius.siegewar.SiegeWar;
@@ -69,7 +70,8 @@ public class SiegeCampUtil {
 				|| !player.getWorld().equals(camp.getBannerBlock().getWorld())
 				|| player.isGliding() 
 				|| player.isFlying() 
-				|| player.getGameMode().equals(GameMode.SPECTATOR))
+				|| player.getGameMode().equals(GameMode.SPECTATOR)
+                || PvPlayer.get(player).isNewbie())
 				continue;
 			
 			// Weed out the player who aren't in the area of the SiegeCamp.

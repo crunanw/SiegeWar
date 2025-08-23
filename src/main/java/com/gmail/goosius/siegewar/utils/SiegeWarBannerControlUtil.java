@@ -18,6 +18,7 @@ import com.palmergames.bukkit.towny.object.Translatable;
 import com.palmergames.bukkit.util.BukkitTools;
 import com.palmergames.util.TimeMgmt;
 import com.palmergames.util.TimeTools;
+import me.NoChance.PvPManager.PvPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -162,6 +163,9 @@ public class SiegeWarBannerControlUtil {
 
 		if (SiegeWarTownPeacefulnessUtil.isTownPeaceful(resident.getTownOrNull())) 
 			return false; //Player if from a peaceful town
+
+        if (PvPlayer.get(player).isNewbie())
+            return false; //Player is newbie
 
 		if(player.isFlying() || player.isGliding())
 			return false;   // Player is flying

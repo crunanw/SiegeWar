@@ -13,6 +13,7 @@ import com.palmergames.bukkit.towny.TownyUniverse;
 import com.palmergames.bukkit.towny.object.Resident;
 import com.palmergames.bukkit.towny.object.Translatable;
 import com.palmergames.util.TimeTools;
+import me.NoChance.PvPManager.PvPlayer;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -96,6 +97,10 @@ public class SiegeWarSicknessUtil {
         }
 
         SiegeWar.getSiegeWar().getScheduler().runLater(player, () -> {
+            if (PvPlayer.get(player).isNewbie()) {
+                Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "cct spawn  " + player.getName());
+                return;
+            }
             if (SiegeWarDistanceUtil.isInSiegeZone(player, siege)) {
                 if (SiegeWarDistanceUtil.isInANonBesiegedTown(player.getLocation())) {
                     //Special War Sickness
@@ -139,6 +144,7 @@ public class SiegeWarSicknessUtil {
     }
 
     public static boolean isOfficialSiegeParticipant(Player player, Resident resident, Siege siege) {
+        if (PvPlayer.get(player).isNewbie()) return false;
         return SiegeSide.getPlayerSiegeSide(siege, player) != SiegeSide.NOBODY;
     }
 
